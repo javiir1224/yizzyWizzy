@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💌 Valentine?</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  button {
+    font-size: 1.1em;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #yesBtn { background: #ff4d6d; color: white; }
+  #noBtn { background: #ddd; }
+
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <img src="image0.jpg">
+  <h1>Will you be my Valentine? Pretty pleasee Im sorry I forgot</h1>
+
+  <button id="yesBtn" onclick="yesClick()">Yes I will, I love you babyyy</button>
+  <button id="noBtn" onclick="noClick()">No, I hate you now, die</button>
+</div>
+
+<script>
+let yesScale = 1;
+
+function yesClick() {
+  document.getElementById("card").innerHTML = "<h1>YIPPEEE</h1><p>I LOVE YOUUU</p>";
+  confetti();
+}
+
+function noClick() {
+  yesScale += 0.25;
+  document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
+}
+
+function confetti() {
+  for (let i = 0; i < 150; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random()*100 + "vw";
+    c.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDuration = (Math.random()*2+2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+}
+</script>
+
+</body>
+</html>
